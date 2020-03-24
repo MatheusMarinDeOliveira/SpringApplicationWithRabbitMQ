@@ -16,8 +16,9 @@ public class SpringController {
 
     @GetMapping("/greeting")
     public String greeting(@RequestParam("name") String name) {
-        String messageFromRabbit = rabbitMQService.sendMessageToRabbit();
+        byte[] message = name.getBytes();
+        rabbitMQService.sendMessageToRabbit(message);
 
-        return messageFromRabbit;
+        return "ok";
     }
 }

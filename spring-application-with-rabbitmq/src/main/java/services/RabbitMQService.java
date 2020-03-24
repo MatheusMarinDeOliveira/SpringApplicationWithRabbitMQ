@@ -2,5 +2,5 @@ package services;
 
 public interface RabbitMQService {
 
-    String sendMessageToRabbit();
+    void sendMessageToRabbit(byte[]  message);
 }
