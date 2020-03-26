@@ -5,10 +5,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import services.RabbitMQService;
+import services.rabbitmq.RabbitMQService;
 
 @RestController
-@ComponentScan(basePackages = {"services"})
+@ComponentScan(basePackages = {"services.rabbitmq"})
 public class SpringController {
 
     @Autowired

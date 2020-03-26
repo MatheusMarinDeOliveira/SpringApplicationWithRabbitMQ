@@ -5,3 +5,7 @@ docker run -d --hostname my-rabbit --name some-rabbit -p 8080:15672 rabbitmq:3-m
 To initialize the rabbit mq management
 
 rabbitmq-plugins enable rabbitmq_management
+
+Requests example:
+
+http://localhost:9090/greeting?name=helloworld
