@@ -13,3 +13,6 @@ Requests example:
 
 http://localhost:9090/greeting?name=helloworld
 
+docker run -d --shm-size=2g -p 1521:1521 -p 8081:8081 orangehrm/oracle-xe-11g
+
+

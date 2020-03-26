@@ -32,6 +32,9 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'org.springframework.amqp:spring-rabbit-test'
+
+    compile group: 'com.zaxxer', name: 'HikariCP', version: '3.4.2'
+
 }
 
 test {
