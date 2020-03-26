@@ -1,9 +1,22 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.oracle.ojdbc:ojdbc8:19.3.0.0"
+    }
+
+}
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.2.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-}
 
+}
+repositories {
+    mavenCentral()
+}
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -14,12 +27,9 @@ configurations {
         extendsFrom developmentOnly
     }
 }
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
+    compile "com.oracle.ojdbc:ojdbc8:19.3.0.0"
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -34,7 +44,9 @@ dependencies {
     testImplementation 'org.springframework.amqp:spring-rabbit-test'
 
     compile group: 'com.zaxxer', name: 'HikariCP', version: '3.4.2'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 
+    
 }
 
 test {

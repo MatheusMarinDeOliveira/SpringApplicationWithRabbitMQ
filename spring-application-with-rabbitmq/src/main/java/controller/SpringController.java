@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import services.oracledb.OracleRepository;
 import services.rabbitmq.RabbitMQService;
 
 @RestController
@@ -14,11 +15,14 @@ public class SpringController {
     @Autowired
     public RabbitMQService rabbitMQService;
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam("name") String name) {
+    @Autowired
+    public OracleRepository oracleRepository;
+
+    @GetMapping("/saveUser")
+    public String greeting(@RequestParam("idUser") String idUser, @RequestParam("name")String name,@RequestParam("password") String password) {
         byte[] message = name.getBytes();
         rabbitMQService.sendMessageToRabbit(message);
-
+        oracleRepository.createUserInDatabase(idUser,name,password);
         return "ok";
     }
 }
