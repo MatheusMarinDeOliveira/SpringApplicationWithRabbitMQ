@@ -30,10 +30,8 @@ public class OracleRepository {
     @Autowired
     public DataSource dataSource;
 
-
     public void createUserInDatabase(String idUser, String name, String password) {
         NamedParameterJdbcTemplate namedParamterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-        createUserAndTable(namedParamterJdbcTemplate);
 
         Map<String, Object> namedParameters = getNamedParameters(idUser, name, password);
         int status = namedParamterJdbcTemplate.update(QUERY_INSERT_VALUES, namedParameters);
@@ -44,7 +42,8 @@ public class OracleRepository {
             System.out.println("User save failed");
     }
 
-    private void createUserAndTable(NamedParameterJdbcTemplate namedParamterJdbcTemplate) {
+    public void connectInDatabase() {
+        NamedParameterJdbcTemplate namedParamterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
         JdbcTemplate jdbcTemplate = namedParamterJdbcTemplate.getJdbcTemplate();
         jdbcTemplate.execute(QUERY_CREATE_USER);
         jdbcTemplate.execute(QUERY_GRANT);
