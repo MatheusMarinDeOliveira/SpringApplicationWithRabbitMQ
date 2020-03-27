@@ -1,5 +1,6 @@
 package services.oracledb;
 
+import entities.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,8 @@ public class OracleService {
         oracleRepository.connectInDatabase();
     }
 
-    public void createUserInDatabase(String user) {
-        oracleRepository.createUserInDatabase(user, "mock", "mock");
+    public void createUserInDatabase(UserVO user) {
+        oracleRepository.createUserInDatabase(user);
     }
 
 }

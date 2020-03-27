@@ -20,10 +20,8 @@ public class SpringController {
 
     @GetMapping("/saveUser")
     public String greeting(@RequestParam("idUser") String idUser, @RequestParam("name") String name, @RequestParam("password") String password) {
-        byte[] nameBytes = name.getBytes();
-        byte[] idUserBytes = idUser.getBytes();
-        byte[] passwordBytes = password.getBytes();
-        rabbitMQService.sendMessageToRabbit(idUserBytes);
+
+        rabbitMQService.sendMessageToRabbit(idUser, name, password);
         return "ok";
     }
 

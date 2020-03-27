@@ -1,5 +1,7 @@
 package services.rabbitmq;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import entities.UserVO;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,8 +15,15 @@ public class RabbitMQListener {
 
     @RabbitListener(queues = "QUEUE_NAME")
     public void listen(byte[] message) {
-        String messageInString = new String(message);
-        oracleService.createUserInDatabase(messageInString);
-        System.out.println(messageInString);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String messageInJson = new String(message);
+        try {
+            UserVO userVO = objectMapper.readValue(messageInJson, UserVO.class);
+            oracleService.createUserInDatabase(userVO);
+
+        } catch (Exception e) {
+            System.out.println("Cannot deserialize the fields");
+        }
+        System.out.println("I listened a message from RabbitMQ!!");
     }
 }

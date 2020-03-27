@@ -1,5 +1,6 @@
 package services.oracledb;
 
+import entities.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -30,7 +31,11 @@ public class OracleRepository {
     @Autowired
     public DataSource dataSource;
 
-    public void createUserInDatabase(String idUser, String name, String password) {
+    public void createUserInDatabase(UserVO userVO) {
+
+        String idUser = userVO.getIdUser();
+        String name = userVO.getName();
+        String password =  userVO.getPassword();
         NamedParameterJdbcTemplate namedParamterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 
         Map<String, Object> namedParameters = getNamedParameters(idUser, name, password);
