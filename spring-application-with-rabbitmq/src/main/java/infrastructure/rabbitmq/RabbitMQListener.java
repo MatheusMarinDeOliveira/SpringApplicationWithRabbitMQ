@@ -1,11 +1,11 @@
-package services.rabbitmq;
+package infrastructure.rabbitmq;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.UserVO;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import services.oracledb.OracleService;
+import infrastructure.oracledb.OracleService;
 
 @Component
 public class RabbitMQListener {

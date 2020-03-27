@@ -1,4 +1,4 @@
-package services.oracledb;
+package infrastructure.oracledb;
 
 import entities.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-@ComponentScan(basePackages = {"services.oracledb"})
+@ComponentScan(basePackages = {"infrastructure.oracledb"})
 public class OracleRepository {
 
     public static final String QUERY_CREATE_USER = "CREATE USER schema_user1 IDENTIFIED BY identifiedBY1";

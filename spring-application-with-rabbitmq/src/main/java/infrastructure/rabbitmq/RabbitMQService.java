@@ -1,4 +1,4 @@
-package services.rabbitmq;
+package infrastructure.rabbitmq;
 
 public interface RabbitMQService {
 
