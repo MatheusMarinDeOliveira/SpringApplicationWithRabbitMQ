@@ -15,8 +15,8 @@ public class SpringController {
     public RabbitMQService rabbitMQService;
 
     @GetMapping("/saveUser")
-    public String greeting(@RequestParam("idUser") Integer idUser, @RequestParam("name") String name, @RequestParam("password") String password) {
+    public String saveUser(@RequestParam("idUser") Integer idUser, @RequestParam("name") String name, @RequestParam("password") String password) {
         rabbitMQService.sendMessageToRabbit(idUser, name, password);
-        return "user created in database!!";
+        return "user " + name +" created in database!!";
     }
 }
