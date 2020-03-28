@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RabbitMQListener {
 
-//    @Autowired
+    @Autowired
     public UserRepository userRepository;
 
     @RabbitListener(queues = "QUEUE_NAME")
