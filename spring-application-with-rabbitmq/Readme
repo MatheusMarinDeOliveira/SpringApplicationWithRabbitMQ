@@ -6,11 +6,12 @@ rabbitmq-plugins enable rabbitmq_management
 
 For Oracle DB, use the image
 https://hub.docker.com/r/orangehrm/oracle-xe-11g
+
 And run the command
 docker run -d --shm-size=2g -p 1521:1521 -p 8081:8081 orangehrm/oracle-xe-11g
 
 Requests example:
-http://localhost:9090/saveUser?idUser=helloworld&name=nameUser&password=senha
+http://localhost:9090/saveUser?idUser=1&name=nameUser&password=senha
 
 
 
