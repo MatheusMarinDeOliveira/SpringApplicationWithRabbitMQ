@@ -2,18 +2,28 @@ package entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity(name = "usuario")
 public class UserVO {
 
     @JsonProperty("idUser")
-    public String idUser;
+    @Id
+    @GeneratedValue
+    public Integer idUser;
 
     @JsonProperty("name")
+    @Column
     public String name;
 
     @JsonProperty("password")
+    @Column
     public String password;
 
-    public UserVO(String idUser, String name, String password) {
+    public UserVO(Integer idUser, String name, String password) {
         this.idUser = idUser;
         this.name = name;
         this.password = password;
@@ -39,11 +49,11 @@ public class UserVO {
         this.password = password;
     }
 
-    public String getIdUser() {
+    public Integer getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(String idUser) {
+    public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
 }
