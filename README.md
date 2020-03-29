@@ -13,7 +13,7 @@ RabbitMQ: https://hub.docker.com/_/rabbitmq
 Follow these steps to test this project:
 1. To start rabbit mq, download image on docker hub and
 ```sh
-docker run -d --hostname my-rabbit --name some-rabbit -p 8080:15672 rabbitmq:3-management
+docker run -d --hostname my-rabbit --name some-rabbit -p 8080:15672 -p 5672:5672 rabbitmq:3-management
 ```
 2. To initialize the rabbit mq management
 ```sh
