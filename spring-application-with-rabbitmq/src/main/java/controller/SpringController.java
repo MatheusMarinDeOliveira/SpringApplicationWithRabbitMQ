@@ -1,10 +1,11 @@
 package controller;
 
+import entities.UserVO;
 import infrastructure.rabbitmq.RabbitMQService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,9 +15,9 @@ public class SpringController {
     @Autowired
     public RabbitMQService rabbitMQService;
 
-    @GetMapping("/saveUser")
-    public String saveUser(@RequestParam("idUser") Integer idUser, @RequestParam("name") String name, @RequestParam("password") String password) {
-        rabbitMQService.sendMessageToRabbit(idUser, name, password);
-        return "user " + name +" created in database!!";
+    @GetMapping("/user")
+    public String saveUser(@RequestBody UserVO payload) {
+        rabbitMQService.sendMessageToRabbit(payload.getIdUser(), payload.getName(), payload.getPassword());
+        return "user " + payload.getName() + " created in database!!";
     }
 }
