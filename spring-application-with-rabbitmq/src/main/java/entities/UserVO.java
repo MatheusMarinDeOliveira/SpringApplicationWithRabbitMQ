@@ -32,7 +32,6 @@ public class UserVO {
     public UserVO() {
     }
 
-
     public String getName() {
         return name;
     }

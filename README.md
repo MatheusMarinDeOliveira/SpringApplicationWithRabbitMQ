@@ -30,4 +30,5 @@ docker run -d --shm-size=2g -p 1521:1521 -p 8081:8081 orangehrm/oracle-xe-11g
 Now you can send requests and test the program!
 
 Requests example:
-http://localhost:9090/saveUser?idUser=1&name=nameUser&password=senha
+POST http://localhost:9090/user
+Body {"idUser": 1, "name": "name", "password":"password"}
